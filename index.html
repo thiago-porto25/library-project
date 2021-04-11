@@ -8,13 +8,36 @@
   </head>
 
   <body>
-    <nav></nav>
     <main>
-      <form>
-        <button id="newBookButton">NEW BOOK</button>
-      </form>
+      <div id="topOfPage">
+        <div id="LibraryHeader">
+          <p>Library</p>
+        </div>
+        <div id="logAndMode">
+          <div id="libraryLog">
+            <div>
+              <p>Total books:</p>
+              <p>Read:</p>
+              <p>Not Read:</p>
+            </div>
+            <div>
+              <p>0</p>
+              <p>0</p>
+              <p>0</p>
+            </div>
+          </div>
+          <div id="darkMode">
+            <p>Dark Mode:</p>
+            <button>icon</button>
+          </div>
+        </div>
+      </div>
+      <div id="libraryContainer"></div>
     </main>
-    <footer></footer>
+    <footer>
+      <p id="created">Created by Thiago Porto</p>
+    </footer>
+    <button id="newBookButton">+</button>
     <script src="./script.js"></script>
   </body>
 </html>
