@@ -3,7 +3,11 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="./style.css" type="text/css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/59cf6b17a6.js" crossorigin="anonymous"></script>
     <title>Test library</title>
   </head>
 
@@ -11,14 +15,14 @@
     <main>
       <div id="topOfPage">
         <div id="LibraryHeader">
+          <i class="fas fa-book"></i>
           <p>Library</p>
         </div>
-        <div id="logAndMode">
           <div id="libraryLog">
             <div>
               <p>Total books:</p>
-              <p>Read:</p>
-              <p>Not Read:</p>
+              <p><span class="readDiv read"></span>Read:</p>
+              <p><span class="readDiv notRead"></span>Not Read:</p>
             </div>
             <div>
               <p>0</p>
@@ -26,16 +30,24 @@
               <p>0</p>
             </div>
           </div>
-          <div id="darkMode">
-            <p>Dark Mode:</p>
-            <button>icon</button>
-          </div>
         </div>
       </div>
-      <div id="libraryContainer"></div>
+      <div id="libraryContainer">
+        <div>
+          <header>The Hobbit</header>
+          <p>Author: J.R.R. Tolkien</p>
+          <p>500 pages</p>
+          <button>x</button>
+          <section><label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </section>
+        </div>
+      </div>
     </main>
     <footer>
-      <p id="created">Created by Thiago Porto</p>
+      <p id="created">Created by <a href="https://github.com/thiago-porto25">Thiago Porto</a>, icons by <a href="https://fontawesome.com/">Font Awesome</a></p>
     </footer>
     <button id="newBookButton">+</button>
     <script src="./script.js"></script>
