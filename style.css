@@ -4,7 +4,7 @@ html {
   color:rgb(54, 11, 11);
 }
 body {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
 }
 #topOfPage {
@@ -52,6 +52,7 @@ body {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
+  outline: none;
 }
 #newBookButton:hover {
   transform: rotate(90deg) scale(1.1);
@@ -73,7 +74,6 @@ body {
   border-radius: 5px;
   box-shadow:4px 4px 5px rgba(78, 7, 7, 0.582);
   margin: 0.5rem;
-  overflow-x: hidden;
   position: relative;
 }
 #libraryContainer div button {
@@ -91,9 +91,10 @@ body {
   transform: scale(1.4);
 }
 #libraryContainer div header {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
   margin-bottom: 2rem;
+  text-decoration: underline;
 }
 footer a {
   color: rgb(54, 11, 11);
