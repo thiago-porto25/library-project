@@ -8,21 +8,33 @@ function Book(id, title, author, pages, read) {
   (this.read = read)
 }
 
+const addBook = document.querySelector('#newBookButton')
+addBook.addEventListener('click', openModal)
+
+function openModal() {
+  const modal = document.querySelector('#myModal')
+  const closeBtn = document.querySelector('.close')
+
+  modal.style.display = "block";
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = "none"
+  })
+
+  window.addEventListener('click', (event) => {
+    if(event.target == modal) {
+      modal.style.display = "none"
+    }
+  })
+
+  //const id = myLibrary.length
+  //addBookToLibrary(id, title, author, pages, true)
+}
+
 function addBookToLibrary(id, title, author, pages, read) {
   const newBook = new Book(id, title, author, pages, read)
   myLibrary.push(newBook)
   createCard(id)
-}
-
-const addBook = document.querySelector('#newBookButton')
-addBook.addEventListener('click', takeInput)
-
-function takeInput() {
-  const title = prompt('What is the title of the book?', '')
-  const author = prompt('Who is the author of the book?', '')
-  const pages = prompt('How many pages does the book have?', '')
-  const id = myLibrary.length
-  addBookToLibrary(id, title, author, pages, true)
 }
 
 function createCard(id) {
@@ -43,6 +55,5 @@ function createCard(id) {
 
 }
 
-console.log(myLibrary)
 
 // change the Hobbit div so that it is hidden and not accessible but we can still copy it for the new divs.

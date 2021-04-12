@@ -18,6 +18,26 @@
           <i class="fas fa-book"></i>
           <p>Library</p>
         </div>
+        <div id="myModal" class="modal">
+          <div class="modalContent">
+            <span class="close">&times;</span>
+            <form>
+              <label for="title">Title:</label>
+              <input id="title" type="text" name="title">
+              <label for="author">Author:</label>
+              <input id="author" type="text" name="author">
+              <label for="pages">How many pages?</label>
+              <input id="pages" type="number" min="1" max="100000" name="pages">
+              <div>
+                <label for="read">Have you read it?</label><br>
+                <input type="checkbox" name="read" id="readYes">
+                <span>Yes</span>
+              </div>
+              <br>
+              <button id="submitBtn" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
           <div id="libraryLog">
             <div>
               <p>Total books:</p>
