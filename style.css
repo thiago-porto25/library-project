@@ -97,6 +97,9 @@ body {
   margin-bottom: 2rem;
   text-decoration: underline;
 }
+#templateCard {
+  display: none;
+}
 footer a {
   color: rgb(54, 11, 11);
 }
@@ -124,7 +127,7 @@ footer a {
   border-radius: 10px;
 }
 
-.modalContent form {
+.modalContent #form {
 display: flex;
 flex-direction: column;
 }

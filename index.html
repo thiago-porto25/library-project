@@ -21,21 +21,21 @@
         <div id="myModal" class="modal">
           <div class="modalContent">
             <span class="close">&times;</span>
-            <form>
+            <div id="form">
               <label for="title">Title:</label>
-              <input id="title" type="text" name="title">
+              <input id="inputTitle" type="text" name="title">
               <label for="author">Author:</label>
-              <input id="author" type="text" name="author">
+              <input id="inputAuthor" type="text" name="author">
               <label for="pages">How many pages?</label>
-              <input id="pages" type="number" min="1" max="100000" name="pages">
+              <input id="inputPages" type="number" min="1" max="100000" name="pages">
               <div>
                 <label for="read">Have you read it?</label><br>
-                <input type="checkbox" name="read" id="readYes">
+                <input type="checkbox" name="read" id="inputReadYes">
                 <span>Yes</span>
               </div>
               <br>
-              <button id="submitBtn" type="submit">Submit</button>
-            </form>
+              <button id="submitBtn">Submit</button>
+            </div>
           </div>
         </div>
           <div id="libraryLog">
@@ -53,7 +53,7 @@
         </div>
       </div>
       <div id="libraryContainer">
-        <div>
+        <div id="templateCard">
           <header>The Hobbit</header>
           <p id="author">Author: J.R.R. Tolkien</p>
           <p id="pages">500 pages</p>
