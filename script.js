@@ -41,7 +41,7 @@ function takeInput() {
   const inputPages = document.querySelector('#inputPages')
   const inputRead = document.querySelector('#inputReadYes')
 
-  const id = myLibrary.length // find a new way
+  let id = myLibrary.length // find a new way
   const title = inputTitle.value
   const author = inputAuthor.value
   const pages = inputPages.value
@@ -88,13 +88,20 @@ function createCard(id) {
   const deleteCardBtns = document.querySelectorAll(`#libraryContainer div[data-delete="${id}"] button`)
   deleteCardBtns.forEach(button => button.addEventListener('click', (event) => {
     if(event.target == button){
-      deleteId = id
+      let deleteId = id
+
       console.log(deleteId)
+
       myLibrary.splice(deleteId, 1)
+
       const cardDeleted = document.querySelector(`[data-delete="${deleteId}"]`)
       cardDeleted.remove()
+
       console.log(myLibrary)
-      if(myLibrary.length == 1) myLibrary = []
+    }
+
+    for (let i = 0; i < myLibrary.length; i++) {
+      myLibrary[i].id = i
     }
   }))
 }
