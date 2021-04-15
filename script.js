@@ -75,8 +75,16 @@ function createCard(id) {
   const templateCard = document.querySelector('#templateCard')
 
   let newCard = document.createElement('div')
+
   newCard.innerHTML = templateCard.innerHTML
   newCard.setAttribute('data-delete', `${id}`)
+
+  if (myLibrary[id].read == false) {
+    xButton = newCard.querySelector('button')
+
+    newCard.setAttribute('class', 'notRead')
+    xButton.setAttribute('class', 'notRead')
+  }
 
   const title = newCard.querySelector('header')
   const author = newCard.querySelector('#author')
@@ -113,11 +121,11 @@ function createCard(id) {
         trackAddTotals()
       }
       const cards = document.querySelectorAll('#libraryContainer div')
-        let counter = 0
-        cards.forEach(card => {
-          card.setAttribute('data-delete', `${counter}`)
-          counter += 1
-        })
+      let counter = 0
+      cards.forEach(card => {
+        card.setAttribute('data-delete', `${counter}`)
+        counter += 1
+      })
 
       for (let i = 0; i < myLibrary.length; i++) {
         myLibrary[i].id = i
