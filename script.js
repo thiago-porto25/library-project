@@ -26,16 +26,56 @@ function openModal() {
 
     modal.style.display = 'block'
 
-    closeBtn.addEventListener('click', closeModal)
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none'
+    })
+
     window.addEventListener('click', event => {
       if (event.target == modal) {
         modal.style.display = 'none'
       }
     })
-
-    submitBtn.addEventListener('click', closeModal)
-    submitBtn.addEventListener('click', takeInput)
+    submitBtn.addEventListener('click', validateInput)
   }
+}
+
+function validateInput() {
+  const inputTitle = document.querySelector('#inputTitle')
+  const inputAuthor = document.querySelector('#inputAuthor')
+  const inputPages = document.querySelector('#inputPages')
+
+  switch (inputTitle.value) {
+    case "":
+      inputTitle.setAttribute('class', 'invalid')
+      break
+    default: 
+      inputTitle.setAttribute('class', '')
+  }
+
+  switch (inputAuthor.value) {
+    case "":
+      inputAuthor.setAttribute('class', 'invalid')
+      break
+    default: 
+      inputAuthor.setAttribute('class', '')
+  }
+
+  switch (inputPages.value) {
+    case "":
+      inputPages.setAttribute('class', 'invalid')
+      break
+    default: 
+      inputPages.setAttribute('class', '')
+  }
+
+  if (inputTitle.value == "" ||
+    inputAuthor.value == "" ||
+    inputPages.value == "") {
+      return
+    } else {
+      getInput()
+      closeModal()
+    }
 }
 
 function closeModal() {
@@ -43,7 +83,7 @@ function closeModal() {
   modal.style.display = 'none'
 }
 
-function takeInput() {
+function getInput() {
   const inputTitle = document.querySelector('#inputTitle')
   const inputAuthor = document.querySelector('#inputAuthor')
   const inputPages = document.querySelector('#inputPages')
