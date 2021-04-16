@@ -23,6 +23,15 @@ function openModal() {
     const modal = document.querySelector('#myModal')
     const closeBtn = document.querySelector('.close')
     const submitBtn = document.querySelector('#submitBtn')
+    const inputTitle = document.querySelector('#inputTitle')
+    const inputAuthor = document.querySelector('#inputAuthor')
+    const inputPages = document.querySelector('#inputPages')
+    const inputRead = document.querySelector('#inputReadYes')
+
+    inputTitle.value = ""
+    inputAuthor.value = ""
+    inputPages.value = ""
+    inputRead.value = ""
 
     modal.style.display = 'block'
 
@@ -47,25 +56,31 @@ function validateInput() {
   switch (inputTitle.value) {
     case "":
       inputTitle.setAttribute('class', 'invalid')
+      inputTitle.setAttribute('placeholder', 'Please, fill the form')
       break
     default: 
       inputTitle.setAttribute('class', '')
+      inputTitle.setAttribute('placeholder', 'What is the Title?')
   }
 
   switch (inputAuthor.value) {
     case "":
       inputAuthor.setAttribute('class', 'invalid')
+      inputAuthor.setAttribute('placeholder', 'Please, fill the form')
       break
     default: 
       inputAuthor.setAttribute('class', '')
+      inputAuthor.setAttribute('placeholder', 'Who is the Author?')
   }
 
   switch (inputPages.value) {
     case "":
       inputPages.setAttribute('class', 'invalid')
+      inputPages.setAttribute('placeholder', 'Please, fill the form')
       break
     default: 
       inputPages.setAttribute('class', '')
+      inputPages.setAttribute('placeholder', 'How many pages?')
   }
 
   if (inputTitle.value == "" ||
@@ -176,7 +191,6 @@ function createCard(id) {
   )
 }
 
-
 function checkLibrary() {
   if (myLibrary == []) return
   else {
@@ -186,7 +200,6 @@ function checkLibrary() {
     })
   }
 }
-
 
 const totalBooks = document.querySelector('#totalBooks')
 const totalRead = document.querySelector('#totalRead')
