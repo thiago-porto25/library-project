@@ -8,6 +8,12 @@ function Book(id, title, author, pages, read) {
     (this.read = read)
 }
 
+const toggleReadStatus = function() {
+  this.read = !this.read
+}
+
+Book.prototype.toggleReadStatus = toggleReadStatus
+
 const addBook = document.querySelector('#newBookButton')
 addBook.addEventListener('click', openModal)
 
@@ -81,7 +87,6 @@ function createCard(id) {
 
   if (myLibrary[id].read == false) {
     xButton = newCard.querySelector('button')
-
     newCard.setAttribute('class', 'notRead')
     xButton.setAttribute('class', 'notRead')
   }
@@ -94,6 +99,7 @@ function createCard(id) {
   pages.textContent = `${myLibrary[id].pages} pages`
 
   libContainer.appendChild(newCard)
+
   trackAddTotals()
 
   const deleteCardBtns = document.querySelectorAll(
@@ -104,16 +110,12 @@ function createCard(id) {
       if (event.target == button) {
         let deleteId = button.parentElement.getAttribute('data-delete')
 
-        console.log(deleteId)
-
         myLibrary.splice(deleteId, 1)
 
         const cardDeleted = document.querySelector(
           `[data-delete="${deleteId}"]`
         )
         cardDeleted.remove()
-
-        console.log(myLibrary)
 
         totalRead.textContent = 0
         totalNotRead.textContent = 0
@@ -134,6 +136,7 @@ function createCard(id) {
   )
 }
 
+
 function checkLibrary() {
   if (myLibrary == []) return
   else {
@@ -144,9 +147,11 @@ function checkLibrary() {
   }
 }
 
+
 const totalBooks = document.querySelector('#totalBooks')
 const totalRead = document.querySelector('#totalRead')
 const totalNotRead = document.querySelector('#totalNotRead')
+
 
 function trackAddTotals() {
   totalBooks.textContent = myLibrary.length
@@ -165,5 +170,3 @@ function trackAddTotals() {
   })
 }
 
-// if the queryselector works we can use the data-delete to delete the in the library. when the delete button is pressed
-// we select the div that was pressed
