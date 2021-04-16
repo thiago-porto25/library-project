@@ -26,6 +26,7 @@ function openModal() {
     const inputTitle = document.querySelector('#inputTitle')
     const inputAuthor = document.querySelector('#inputAuthor')
     const inputPages = document.querySelector('#inputPages')
+    const inputRead = document.querySelector('#inputReadYes')
 
     modal.style.display = 'block'
 
@@ -36,6 +37,7 @@ function openModal() {
       inputAuthor.setAttribute('class', '')
       inputPages.setAttribute('placeholder', 'How many Pages?')
       inputPages.setAttribute('class', '')
+      inputRead.checked = false
       modal.style.display = 'none'
     })
 
@@ -47,6 +49,7 @@ function openModal() {
         inputAuthor.setAttribute('class', '')
         inputPages.setAttribute('placeholder', 'How many Pages?')
         inputPages.setAttribute('class', '')
+        inputRead.checked = false
         modal.style.display = 'none'
       }
     })
