@@ -15,7 +15,8 @@ const toggleReadStatus = function() {
 Book.prototype.toggleReadStatus = toggleReadStatus
 
 const addBook = document.querySelector('#newBookButton')
-addBook.addEventListener('click', openModal)
+const clearAllBooks = document.querySelector('#clearAllBooks')
+
 
 function openModal() {
   if (myLibrary.length > 25) return
@@ -232,3 +233,13 @@ function trackAddTotals() {
   })
 }
 
+clearAllBooks.addEventListener('click', clearAll)
+addBook.addEventListener('click', openModal)
+
+function clearAll() {
+  myLibrary = []
+  document.querySelector('#libraryContainer').innerHTML = ''
+  totalBooks.textContent = '0'
+  totalRead.textContent = '0'
+  totalNotRead.textContent = '0'
+}
