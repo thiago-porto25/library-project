@@ -2,6 +2,7 @@ html {
   background-color: #faf8c6;
   font-family: 'Prompt', sans-serif;
   color:rgb(54, 11, 11);
+  margin-bottom: -10px;
 }
 body {
   width: 85%;
@@ -10,6 +11,8 @@ body {
 #topOfPage {
   width: 100%;
   display: flex;
+  position: relative;
+  top: -1rem;
 }
 #LibraryHeader{
   width: 50%;
@@ -75,7 +78,7 @@ body {
 #libraryContainer {
   width: 100%;
   height:max-content;
-  min-height: 55vh;
+  min-height: 50vh;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 5%;
@@ -90,6 +93,27 @@ body {
   box-shadow:4px 4px 5px rgba(78, 7, 7, 0.582);
   margin: 0.5rem;
   position: relative;
+  transition: 0.2s;
+  -webkit-animation-name: animdiv;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animdiv;
+  animation-duration: 0.4s;
+}
+@-webkit-keyframes animdiv {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes animdiv {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 #libraryContainer div button {
   background-color: rgb(197, 164, 101);

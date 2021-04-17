@@ -8,15 +8,8 @@ function Book(id, title, author, pages, read) {
     (this.read = read)
 }
 
-const toggleReadStatus = function() {
-  this.read = !this.read
-}
-
-Book.prototype.toggleReadStatus = toggleReadStatus
-
 const addBook = document.querySelector('#newBookButton')
 const clearAllBooks = document.querySelector('#clearAllBooks')
-
 
 function openModal() {
   if (myLibrary.length > 25) return
@@ -64,43 +57,45 @@ function validateInput() {
   const inputPages = document.querySelector('#inputPages')
 
   switch (inputTitle.value) {
-    case "":
+    case '':
       inputTitle.setAttribute('class', 'invalid')
       inputTitle.setAttribute('placeholder', 'Please, fill the form')
       break
-    default: 
+    default:
       inputTitle.setAttribute('class', '')
       inputTitle.setAttribute('placeholder', 'What is the Title?')
   }
 
   switch (inputAuthor.value) {
-    case "":
+    case '':
       inputAuthor.setAttribute('class', 'invalid')
       inputAuthor.setAttribute('placeholder', 'Please, fill the form')
       break
-    default: 
+    default:
       inputAuthor.setAttribute('class', '')
       inputAuthor.setAttribute('placeholder', 'Who is the Author?')
   }
 
   switch (inputPages.value) {
-    case "":
+    case '':
       inputPages.setAttribute('class', 'invalid')
       inputPages.setAttribute('placeholder', 'Please, fill the form')
       break
-    default: 
+    default:
       inputPages.setAttribute('class', '')
       inputPages.setAttribute('placeholder', 'How many pages?')
   }
 
-  if (inputTitle.value == "" ||
-    inputAuthor.value == "" ||
-    inputPages.value == "") {
-      return
-    } else {
-      getInput()
-      closeModal()
-    }
+  if (
+    inputTitle.value == '' ||
+    inputAuthor.value == '' ||
+    inputPages.value == ''
+  ) {
+    return
+  } else {
+    getInput()
+    closeModal()
+  }
 }
 
 function closeModal() {
@@ -150,10 +145,15 @@ function createCard(id) {
   newCard.innerHTML = templateCard.innerHTML
   newCard.setAttribute('data-delete', `${id}`)
 
+  const readCheckbox = newCard.querySelector('.checkbox')
+  const xButton = newCard.querySelector('button')
+
   if (myLibrary[id].read == false) {
-    xButton = newCard.querySelector('button')
     newCard.setAttribute('class', 'notRead')
     xButton.setAttribute('class', 'notRead')
+    readCheckbox.checked = false
+  } else {
+    readCheckbox.checked = true
   }
 
   const title = newCard.querySelector('header')
@@ -166,6 +166,33 @@ function createCard(id) {
   libContainer.appendChild(newCard)
 
   trackAddTotals()
+
+  const allToggles = document.querySelectorAll('#libraryContainer div label')
+
+  allToggles.forEach(toggle =>
+    toggle.addEventListener('click', () => {
+      const checkBox = toggle.querySelector('.checkbox')
+      const card = toggle.parentElement.parentElement
+      const close = card.querySelector('button')
+      const id = card.getAttribute('data-delete')
+
+      if (checkBox.checked == true) {
+        card.setAttribute('class', 'notRead')
+        close.setAttribute('class', 'notRead')
+        myLibrary[id].read = false
+        checkBox.checked = false
+        trackAddTotals()
+        return
+      } else {
+        card.setAttribute('class', '')
+        close.setAttribute('class', '')
+        myLibrary[id].read = true
+        checkBox.checked = true
+        trackAddTotals()
+        return
+      }
+    })
+  )
 
   const deleteCardBtns = document.querySelectorAll(
     `#libraryContainer div[data-delete="${id}"] button`
@@ -180,15 +207,15 @@ function createCard(id) {
         const cardDeleted = document.querySelector(
           `[data-delete="${deleteId}"]`
         )
+        
         cardDeleted.remove()
-
-        totalRead.textContent = 0
-        totalNotRead.textContent = 0
 
         trackAddTotals()
       }
       const cards = document.querySelectorAll('#libraryContainer div')
+
       let counter = 0
+
       cards.forEach(card => {
         card.setAttribute('data-delete', `${counter}`)
         counter += 1
@@ -215,12 +242,13 @@ const totalBooks = document.querySelector('#totalBooks')
 const totalRead = document.querySelector('#totalRead')
 const totalNotRead = document.querySelector('#totalNotRead')
 
-
 function trackAddTotals() {
   totalBooks.textContent = myLibrary.length
 
   let numberRead = 0
   let numberNotRead = 0
+  totalRead.textContent = 0
+  totalNotRead.textContent = 0
 
   myLibrary.forEach(book => {
     if (book.read == true) {
