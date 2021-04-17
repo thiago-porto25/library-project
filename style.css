@@ -57,6 +57,7 @@ body {
   height: 2.2rem;
   cursor: pointer;
   background-color:#ac9447;
+  margin-top: -0.2rem;
 }
 #newBookButton {
   cursor: pointer;
@@ -157,6 +158,7 @@ footer {
   flex-direction: column;
   justify-content:flex-end;
 }
+
 
 .modal {
   display: none;
