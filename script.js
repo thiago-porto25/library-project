@@ -1,11 +1,13 @@
 let myLibrary = []
 
-function Book(id, title, author, pages, read) {
-  ;(this.id = id),
-    (this.title = title),
-    (this.author = author),
-    (this.pages = pages),
-    (this.read = read)
+class Book {
+  constructor(id, title, author, pages, read) {
+    this.id = id
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.read = read
+  }
 }
 
 const addBook = document.querySelector('#newBookButton')
@@ -24,7 +26,7 @@ function openModal() {
 
     modal.style.display = 'block'
 
-    closeBtn.addEventListener('click', () => {
+    function resetAttributesCloseModal() {
       inputTitle.setAttribute('placeholder', 'What is the Title?')
       inputTitle.setAttribute('class', '')
       inputAuthor.setAttribute('placeholder', 'Who is the Author?')
@@ -33,20 +35,18 @@ function openModal() {
       inputPages.setAttribute('class', '')
       inputRead.checked = false
       modal.style.display = 'none'
+    }
+
+    closeBtn.addEventListener('click', () => {
+      resetAttributesCloseModal()
     })
 
     window.addEventListener('click', event => {
       if (event.target == modal) {
-        inputTitle.setAttribute('placeholder', 'What is the Title?')
-        inputTitle.setAttribute('class', '')
-        inputAuthor.setAttribute('placeholder', 'Who is the Author?')
-        inputAuthor.setAttribute('class', '')
-        inputPages.setAttribute('placeholder', 'How many Pages?')
-        inputPages.setAttribute('class', '')
-        inputRead.checked = false
-        modal.style.display = 'none'
+        resetAttributesCloseModal()
       }
     })
+
     submitBtn.addEventListener('click', validateInput)
   }
 }
@@ -132,7 +132,6 @@ function getInput() {
 function addBookToLibrary(id, title, author, pages, read) {
   const newBook = new Book(id, title, author, pages, read)
   myLibrary.push(newBook)
-  console.log(myLibrary)
   createCard(id)
 }
 
@@ -207,7 +206,7 @@ function createCard(id) {
         const cardDeleted = document.querySelector(
           `[data-delete="${deleteId}"]`
         )
-        
+
         cardDeleted.remove()
 
         trackAddTotals()
